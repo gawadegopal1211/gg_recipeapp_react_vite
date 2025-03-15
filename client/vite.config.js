@@ -24,4 +24,6 @@ export default defineConfig({
       },
     },
   },
+
+  base: PROCESS.env.VITE_BASE_PATH || "/gg_recipeapp_react_vite/tree/main/client"
 })
