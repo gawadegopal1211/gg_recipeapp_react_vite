@@ -12,7 +12,7 @@ app.use(cors());
 app.use("/auth", userRouter);
 app.use("/recipes", recipeRouter);
 
-const url = process.env.SECRET_KEY;
+const url = import.meta.env.SECRET_KEY;
 mongoose.connect(url,
     {
         useNewUrlParser: true,
