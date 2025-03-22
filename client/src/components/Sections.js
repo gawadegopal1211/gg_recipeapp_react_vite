@@ -31,6 +31,7 @@ import CancelIcon from "@mui/icons-material/Cancel";
 import { recipes } from "./Categories";
 import { modeContext } from "../App";
 import Select from "react-select";
+import { motion } from "motion/react";
 
 const Sections = () => {
     const navigate = useNavigate();
@@ -196,6 +197,36 @@ const Sections = () => {
         }
     };
 
+    const leftVariants = {
+        initial: {
+            x: -100,
+            opacity: 0,
+        },
+        animate: {
+            x: 0,
+            opacity: 1,
+            transition: {
+                duration: 1,
+                staggerChildren: 0.2,
+            },
+        },
+    };
+
+    const rightVariants = {
+        initial: {
+            x: 100,
+            opacity: 0,
+        },
+        animate: {
+            x: 0,
+            opacity: 1,
+            transition: {
+                duration: 1,
+                staggerChildren: 0.2,
+            },
+        },
+    };
+
     return (
         <div>
             <Grid container spacing={2} sx={{ mb: 6 }}>
@@ -246,7 +277,16 @@ const Sections = () => {
                 {userInfo === null ? (
                     <Grid size={{ lg: 6, md: 6, sm: 12, xs: 12 }}>
                         <SectionBox2 sx={{ minHeight: "400px" }}>
-                            <img src={burger} alt="" height={"200px"} width={"auto"} />
+
+                            <motion.img
+                                variants={rightVariants}
+                                initial="initial"
+                                animate="animate"
+                                src={burger}
+                                alt=""
+                                height={"200px"}
+                                width={"auto"}
+                            />
 
                             <Typography variant="caption" sx={{ color: "#00ab6b", mt: 2 }}>
                                 Image by{" "}
@@ -266,7 +306,15 @@ const Sections = () => {
                     <SectionBox2
                         sx={{ minHeight: userInfo !== null ? "280px" : "400px" }}
                     >
-                        <img src={salad} alt="" height={"200px"} width={"auto"} />
+                        <motion.img
+                            variants={leftVariants}
+                            initial="initial"
+                            animate="animate"
+                            src={salad}
+                            alt=""
+                            height={"200px"}
+                            width={"auto"}
+                        />
 
                         <Typography variant="caption" sx={{ color: "#00ab6b", mt: 2 }}>
                             Image by{" "}
